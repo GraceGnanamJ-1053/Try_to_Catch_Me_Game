@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: python-game-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: python-game
+  template:
+    metadata:
+      labels:
+        app: python-game
+    spec:
+      containers:
+      - name: python-game
+        image: __ACR_LOGIN_SERVER__/__IMAGE_NAME__:__TAG__ # Placeholders
+        ports:
+        - containerPort: 5000  # <-- CRITICAL: Must match your app's port
